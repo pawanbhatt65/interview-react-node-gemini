@@ -24,9 +24,9 @@ import authRouter from "./routes/auth.route.js"
 import interviewRouter from "./routes/interview.route.js"
 
 
-app.use("/", (req, res) => {
-    res.send("Hello world.");
-});
+// app.use("/", (req, res) => {
+//     res.send("Hello world.");
+// });
 
 // auth routes
 app.use("/api/auth", authRouter);
