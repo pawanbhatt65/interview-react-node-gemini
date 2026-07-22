@@ -45,12 +45,20 @@ export const registerUserController=async(req, res)=>{
             password: hash,
         })
 
-        console.log("jwt secret: ", jwt_secret)
+        // console.log("jwt secret: ", jwt_secret)
         const token = await jwt.sign(
             {id: user._id, username: user.username},jwt_secret, { expiresIn: "1d" }
         )
 
-        res.cookie("token", token)
+        // res.cookie("token", token)
+        const isProduction = process.env.NODE_ENV === "production";
+
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: isProduction,
+            sameSite: isProduction ? "none" : "lax",
+            maxAge: 24 * 60 * 60 * 1000,
+        });
 
         return res.status(201).json({
             message: "User register successfully.",
@@ -96,7 +104,17 @@ export const loginUserController=async(req, res)=>{
             {id: user._id, username: user.username},jwt_secret, {expiresIn: "1d"}
         )
 
-        res.cookie("token", token)
+        // res.cookie("token", token)
+
+        // res.cookie("token", token)
+        const isProduction = process.env.NODE_ENV === "production";
+
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: isProduction,
+            sameSite: isProduction ? "none" : "lax",
+            maxAge: 24 * 60 * 60 * 1000,
+        });
 
         return res.status(200).json({
             message: "User loggedIn successfully.",
