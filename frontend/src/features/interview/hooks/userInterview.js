@@ -31,7 +31,7 @@ export const useInterview = () => {
         selfDescription,
         resumeFile,
       });
-      //   console.log("response from userInterview.js: ", response);
+        console.log("response from userInterview.js: ", response);
       setReport(response.interviewReport);
       interviewReportData = response.interviewReport;
     } catch (error) {

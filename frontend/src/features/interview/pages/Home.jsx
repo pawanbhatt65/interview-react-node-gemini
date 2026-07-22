@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import "../style/home.scss";
 import { useInterview } from "../hooks/userInterview.js";
 import { useNavigate } from "react-router";
+import Logout from "../components/Logout.jsx";
 
 const Home = () => {
   const { loading, generateReport, reports, getReports } = useInterview();
@@ -18,6 +19,7 @@ const Home = () => {
       selfDescription,
       resumeFile,
     });
+    console.log("data is: ", data);
     navigate(`/interview/${data._id}`);
   };
 
@@ -37,6 +39,8 @@ const Home = () => {
 
   return (
     <div className="home-page">
+      {/* add-logout-btn */}
+      <Logout />
       {/* Page Header */}
       <header className="page-header">
         <h1>

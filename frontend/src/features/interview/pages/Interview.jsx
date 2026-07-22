@@ -2,6 +2,8 @@ import { useState } from "react";
 import "../style/interview.scss";
 import { useParams } from "react-router";
 import { useInterview } from "../hooks/userInterview";
+import Logout from "../components/Logout";
+import Back from "../components/Back";
 
 const NAV_ITEMS = [
   {
@@ -151,6 +153,10 @@ const Interview = () => {
 
   return (
     <div className="interview-page">
+      {/* add-logout-btn */}
+      <Logout />
+      {/* back-button */}
+      <Back />
       <div className="interview-layout">
         {/* ── Left Nav ── */}
         <nav className="interview-nav">
@@ -171,7 +177,7 @@ const Interview = () => {
             onClick={() => {
               getResumePdf(interviewId);
             }}
-            className="button primary-button"
+            className="button primary-button" style={{display: "none"}}
           >
             <svg
               height={"0.8rem"}

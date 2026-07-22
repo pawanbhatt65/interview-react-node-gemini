@@ -1,9 +1,4 @@
-import axios from "axios";
-
-const api = axios.create({
-    baseURL: "https://interview-report-lqw1.onrender.com",
-    withCredentials: true,
-})
+import api from "../../../BaseUrl"
 
 /**
  * @description Generate interview report, accept job description, self description, and resume file

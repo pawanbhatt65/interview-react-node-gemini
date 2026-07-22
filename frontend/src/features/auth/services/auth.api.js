@@ -1,10 +1,4 @@
-import axios from "axios";
-
-const api = axios.create({
-  baseURL: "https://interview-report-lqw1.onrender.com",
-  // baseURL: "http://localhost:3000",
-  withCredentials: true,
-});
+import api from "../../../BaseUrl";
 
 export async function register({ username, email, password }) {
   try {
